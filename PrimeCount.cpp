@@ -1,8 +1,6 @@
 #include "PrimeCount.h"
 
-//log
 #include <cmath>
-//egamma
 #include <numbers>
 
 uint64_t LegendreCount (uint64_t n)

@@ -1,7 +1,6 @@
 #include "PrimeSieve.h"
 
 #include <iostream>
-#include <vector>
 
 PrimeSieve::PrimeSieve (size_t limit)
     : PrimeSieve (limit, false) {}
@@ -12,7 +11,7 @@ PrimeSieve::PrimeSieve (size_t limit, bool verbose)
     sieve.Set (0, false);
     sieve.Set (1, false);
     uint64_t prime = 2;
-    primes.push_back (2);
+    primes.emplace_back (2);
 
     if (verbose)
         while (prime * prime < limit)
@@ -26,7 +25,7 @@ PrimeSieve::PrimeSieve (size_t limit, bool verbose)
                 if (sieve.Get (size_t (i)))
                 {
                     prime = i;
-                    primes.push_back (i);
+                    primes.emplace_back (i);
                     break;
                 }
         }
@@ -40,7 +39,7 @@ PrimeSieve::PrimeSieve (size_t limit, bool verbose)
                 if (sieve.Get (size_t (i)))
                 {
                     prime = i;
-                    primes.push_back (i);
+                    primes.emplace_back (i);
                     break;
                 }
         }
@@ -70,7 +69,7 @@ size_t PrimeSieve::Count () const
     return primes.size ();
 }
 
-bool PrimeSieve::IsPrime (uint64_t n) const
+bool PrimeSieve::IsPrime (size_t n) const
 {
     return sieve.Get (n);
 }

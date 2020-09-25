@@ -1,6 +1,5 @@
 #pragma once
 
-//uint64_t
 #include <cstdint>
 
 /// <summary>

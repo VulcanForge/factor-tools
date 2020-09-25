@@ -1,8 +1,6 @@
 #pragma once
 
-//size_t
 #include <cstddef>
-//uint64_t
 #include <cstdint>
 #include <optional>
 #include <vector>
@@ -51,11 +49,13 @@ public:
     /// <summary>
     /// Constructs an OptimizedFactorization of n.
     /// </summary>
+    /// <param name="n">The number n.</param>
     OptimizedFactorization (uint64_t n);
 
     /// <summary>
     /// Constructs an OptimizedFactorization of n.
     /// </summary>
+    /// <param name="n">The number n.</param>
     /// <param name="verbose">Whether to output progress to std::clog.</param>
     OptimizedFactorization (uint64_t n, bool verbose);
 

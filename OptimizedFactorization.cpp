@@ -1,14 +1,9 @@
 #include "OptimizedFactorization.h"
 
-//sort
 #include <algorithm>
-//sqrt
 #include <cmath>
-//clog
 #include <iostream>
-//accumulate
 #include <numeric>
-#include <vector>
 
 #include "Exponent.h"
 #include "PrimeSieve.h"
@@ -46,7 +41,7 @@ void OptimizedFactorization::GeneratePrimeFactors (bool verbose)
 
             if (power > 0)
             {
-                primeFactors.push_back (PrimePower (prime, power));
+                primeFactors.emplace_back (prime, power);
                 sqrt_r = uint64_t (sqrt (r));
             }
         }
@@ -65,13 +60,13 @@ void OptimizedFactorization::GeneratePrimeFactors (bool verbose)
 
             if (power > 0)
             {
-                primeFactors.push_back (PrimePower (prime, power));
+                primeFactors.emplace_back (prime, power);
                 sqrt_r = uint64_t (sqrt (r));
             }
         }
 
     if (r > 1)
-        primeFactors.push_back (PrimePower (r, 1));
+        primeFactors.emplace_back (r, 1);
 }
 
 void OptimizedFactorization::GenerateFactors ()
@@ -83,16 +78,16 @@ void OptimizedFactorization::GenerateFactors ()
     for (size_t i = 0; i < addressSize; i++)
         numberFactors *= (primeFactors[i].power + 1);
 
-    for (uint64_t i = 0; i < numberFactors; i++)
+    for (size_t i = 0; i < numberFactors; i++)
     {
         uint64_t factor = 1;
 
-        for (uint64_t j = 0; j < addressSize; j++)
+        for (size_t j = 0; j < addressSize; j++)
             factor *= Pow (primeFactors[j].prime, address[j]);
 
         factors.push_back (factor);
 
-        for (uint64_t j = 0; j < addressSize; j++)
+        for (size_t j = 0; j < addressSize; j++)
         {
             address[j] = (address[j] + 1) % (primeFactors[j].power + 1);
 
@@ -124,7 +119,7 @@ std::vector<PrimePower>::const_iterator OptimizedFactorization::PrimeFactorsEnd 
     return primeFactors.cend ();
 }
 
-uint64_t OptimizedFactorization::PrimeFactorsCount () const
+size_t OptimizedFactorization::PrimeFactorsCount () const
 {
     return primeFactors.size ();
 }
@@ -139,7 +134,7 @@ std::vector<uint64_t>::const_iterator OptimizedFactorization::FactorsEnd () cons
     return factors.cend ();
 }
 
-uint64_t OptimizedFactorization::FactorsCount () const
+size_t OptimizedFactorization::FactorsCount () const
 {
     return factors.size ();
 }

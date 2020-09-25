@@ -1,8 +1,6 @@
 #pragma once
 
-//size_t
 #include <cstddef>
-//uint64_t
 #include <cstdint>
 #include <vector>
 
@@ -33,11 +31,13 @@ public:
     /// <summary>
     /// Constructs a PrimeSieve over [0, limit).
     /// </summary>
+    /// <param name="limit">The maximum index of the sieve + 1.</param>
     PrimeSieve (size_t limit);
 
     /// <summary>
     /// Constructs a PrimeSieve over [0, limit).
     /// </summary>
+    /// <param name="limit">The maximum index of the sieve + 1.</param>
     /// <param name="verbose">Whether to output progress to std::clog.</param>
     PrimeSieve (size_t limit, bool verbose);
 
@@ -64,5 +64,6 @@ public:
     /// <summary>
     /// Returns whether n is prime, if n is in [0, Limit ()).
     /// </summary>
+    /// <param name="n">The number n.</param>
     bool IsPrime (size_t n) const;
 };

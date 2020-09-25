@@ -1,22 +1,17 @@
 #include "Factorization.h"
 
-//sort
 #include <algorithm>
-//sqrt
 #include <cmath>
-//clog
 #include <iostream>
-//accumulate
 #include <numeric>
-#include <vector>
 
 #include "Exponent.h"
 #include "PrimeSieve.h"
 
 void Factorization::GeneratePrimeFactors (bool verbose)
 {
-    size_t sqrt_r = size_t (sqrt (n));
-    PrimeSieve sieve (sqrt_r + 1, verbose);
+    uint64_t sqrt_r = uint64_t (sqrt (n));
+    PrimeSieve sieve (size_t (sqrt_r + 1), verbose);
     auto begin = sieve.ListBegin ();
     auto end = sieve.ListEnd ();
     uint64_t r = n;
@@ -41,8 +36,8 @@ void Factorization::GeneratePrimeFactors (bool verbose)
 
             if (power > 0)
             {
-                primeFactors.push_back (PrimePower (prime, power));
-                sqrt_r = size_t (sqrt (r));
+                primeFactors.emplace_back (prime, power);
+                sqrt_r = uint64_t (sqrt (r));
             }
         }
     }
@@ -60,13 +55,13 @@ void Factorization::GeneratePrimeFactors (bool verbose)
 
             if (power > 0)
             {
-                primeFactors.push_back (PrimePower (prime, power));
-                sqrt_r = size_t (sqrt (r));
+                primeFactors.emplace_back (prime, power);
+                sqrt_r = uint64_t (sqrt (r));
             }
         }
 
     if (r > 1)
-        primeFactors.push_back (PrimePower (r, 1));
+        primeFactors.emplace_back (r, 1);
 }
 
 void Factorization::GenerateFactors ()
@@ -85,7 +80,7 @@ void Factorization::GenerateFactors ()
         for (size_t j = 0; j < addressSize; j++)
             factor *= Pow (primeFactors[j].prime, address[j]);
 
-        factors.push_back (factor);
+        factors.emplace_back (factor);
 
         for (size_t j = 0; j < addressSize; j++)
         {

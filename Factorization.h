@@ -1,8 +1,6 @@
 #pragma once
 
-//size_t
 #include <cstddef>
-//uint64_t
 #include <cstdint>
 #include <vector>
 
@@ -44,11 +42,13 @@ public:
     /// <summary>
     /// Constructs a Factorization of n.
     /// </summary>
+    /// <param name="n">The number n.</param>
     Factorization (uint64_t n);
 
     /// <summary>
     /// Constructs a Factorization of n.
     /// </summary>
+    /// <param name="n">The number n.</param>
     /// <param name="verbose">Whether to output progress to clog.</param>
     Factorization (uint64_t n, bool verbose);
 
