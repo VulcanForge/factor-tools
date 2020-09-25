@@ -104,6 +104,11 @@ Factorization::Factorization (uint64_t n, bool verbose)
     GenerateFactors ();
 }
 
+const std::vector<PrimePower>& Factorization::PrimeFactors () const
+{
+    return primeFactors;
+}
+
 std::vector<PrimePower>::const_iterator Factorization::PrimeFactorsBegin () const
 {
     return primeFactors.cbegin ();
@@ -117,6 +122,11 @@ std::vector<PrimePower>::const_iterator Factorization::PrimeFactorsEnd () const
 size_t Factorization::PrimeFactorsCount () const
 {
     return primeFactors.size ();
+}
+
+const std::vector<uint64_t>& Factorization::Factors () const
+{
+    return factors;
 }
 
 std::vector<uint64_t>::const_iterator Factorization::FactorsBegin () const

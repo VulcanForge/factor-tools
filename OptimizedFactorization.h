@@ -60,6 +60,11 @@ public:
     OptimizedFactorization (uint64_t n, bool verbose);
 
     /// <summary>
+    /// Returns the list of prime factors of n.
+    /// </summary>
+    const std::vector<PrimePower>& PrimeFactors () const;
+
+    /// <summary>
     /// Returns an iterator to the beginning of the prime factors of n.
     /// </summary>
     std::vector<PrimePower>::const_iterator PrimeFactorsBegin () const;
@@ -73,6 +78,11 @@ public:
     /// Returns the number of distinct prime factors of n.
     /// </summary>
     size_t PrimeFactorsCount () const;
+
+    /// <summary>
+    /// Returns the list of factors of n.
+    /// </summary>
+    const std::vector<uint64_t>& Factors () const;
 
     /// <summary>
     /// Returns an iterator to the beginning of the factors of n.

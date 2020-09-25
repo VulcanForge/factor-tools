@@ -47,6 +47,11 @@ public:
     size_t Limit () const;
 
     /// <summary>
+    /// Returns the list of primes in [0, Limit ()).
+    /// </summary>
+    const std::vector<uint64_t>& List () const;
+
+    /// <summary>
     /// Returns an iterator to the beginning of the primes in [0, Limit ()).
     /// </summary>
     std::vector<uint64_t>::const_iterator ListBegin () const;

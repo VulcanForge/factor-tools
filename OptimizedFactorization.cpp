@@ -109,6 +109,11 @@ OptimizedFactorization::OptimizedFactorization (uint64_t n, bool verbose)
     GenerateFactors ();
 }
 
+const std::vector<PrimePower>& OptimizedFactorization::PrimeFactors () const
+{
+    return primeFactors;
+}
+
 std::vector<PrimePower>::const_iterator OptimizedFactorization::PrimeFactorsBegin () const
 {
     return primeFactors.cbegin ();
@@ -122,6 +127,11 @@ std::vector<PrimePower>::const_iterator OptimizedFactorization::PrimeFactorsEnd 
 size_t OptimizedFactorization::PrimeFactorsCount () const
 {
     return primeFactors.size ();
+}
+
+const std::vector<uint64_t>& OptimizedFactorization::Factors () const
+{
+    return factors;
 }
 
 std::vector<uint64_t>::const_iterator OptimizedFactorization::FactorsBegin () const

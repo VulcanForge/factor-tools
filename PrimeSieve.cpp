@@ -54,6 +54,11 @@ size_t PrimeSieve::Limit () const
     return limit;
 }
 
+const std::vector<uint64_t>& PrimeSieve::List () const
+{
+    return primes;
+}
+
 std::vector<uint64_t>::const_iterator PrimeSieve::ListBegin () const
 {
     return primes.cbegin ();
